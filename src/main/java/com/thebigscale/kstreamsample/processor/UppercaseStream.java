@@ -1,4 +1,4 @@
-package com.thebigscale.kstreamsample.promotion;
+package com.thebigscale.kstreamsample.processor;
 
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
