@@ -2,9 +2,8 @@
 ---------------------------------------------------
 
 
-
-To create a streaming consumer using spring boot, you would need to crate a configuration class
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create a configuration class
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 1. Create a configuration and enable kafka stream using the @EnableKafkaStreams annotation.
@@ -16,6 +15,7 @@ To create a streaming consumer using spring boot, you would need to crate a conf
 image::image-2020-11-25-13-23-43-891.png[]
 
 Create a Topology using the KStream as a Bean
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. A configuration class is declared
 2. StreamsBuilder is injected
