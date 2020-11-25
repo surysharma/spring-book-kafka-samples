@@ -9,19 +9,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class PromotionUppercaseStream {
+public class UppercaseStream {
 
     @Bean
     public KStream<String, String> kStreamPromoToUppercase(StreamsBuilder builder) {
         KStream<String, String> sourceStream = builder
-                .stream("t.commodity.promotion",
+                .stream("t.upper.case",
                         Consumed.with(Serdes.String(), Serdes.String()));
 
-        sourceStream.print(Printed.<String, String>toSysOut().withLabel("Original KStream"));
+        sourceStream.print(Printed.<String, String>toSysOut().withLabel("Original KStream..."));
 
-        KStream<String, String> upperCaseStream = sourceStream.mapValues(promo -> promo.toUpperCase());
+        KStream<String, String> upperCaseStream = sourceStream.mapValues(text -> text.toUpperCase());
 
-        upperCaseStream.print(Printed.<String, String>toSysOut().withLabel("Uppercase KStream"));
+        upperCaseStream.print(Printed.<String, String>toSysOut().withLabel("Uppercase KStream..."));
 
         return upperCaseStream;
 

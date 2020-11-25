@@ -10,12 +10,12 @@ services:
   kafka:
     image: wurstmeister/kafka:2.12-2.4.1
     container_name: kafka
+    hostname: kafka
     ports: ["9092:9092"]
-    volumes:
-      - /Users/sureshsharma/apps/kafka/docker-data/kafka:/opt/kafka
     depends_on:
       - zookeeper
     environment:
+#      KAFKA_BROKER_ID: 1
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: DOCKER_INTERNAL:PLAINTEXT,DOCKER_EXTERNAL:PLAINTEXT
@@ -23,8 +23,4 @@ services:
       KAFKA_ADVERTISED_LISTENERS: DOCKER_INTERNAL://kafka:29092,DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
       KAFKA_INTER_BROKER_LISTENER_NAME: DOCKER_INTERNAL
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-#      KAFKA_CREATE_TOPICS: >-
-#        swap-deals-raw-ok:3:1,
-#        swap-deals-processed:3:1,
-#        market-data-raw-ok:3:1,
-#        aggregation-done-topic:3:1,
+      KAFKA_CREATE_TOPICS: "t.upper.case:3:1"
