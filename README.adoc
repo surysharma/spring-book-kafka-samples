@@ -20,7 +20,7 @@ Create a Topology using the KStream as a Bean
 1. A configuration class is declared
 2. StreamsBuilder is injected
 
-image::image-2020-11-25-13-32-33-883.png[]
+image::image-2020-11-25-19-50-51-338.png[]
 
 How to run the sample app?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

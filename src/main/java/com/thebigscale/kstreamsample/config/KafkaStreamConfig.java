@@ -28,7 +28,7 @@ public class KafkaStreamConfig {
         val props = new HashMap<String, Object>();
 
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "kafka-stream");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("sping.kafka.bootstrap-servers", "localhost:9092"));
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("spring.kafka.bootstrap-servers", "localhost:9092"));
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
 
