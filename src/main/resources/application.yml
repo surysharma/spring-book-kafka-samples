@@ -4,7 +4,6 @@ logging:
 
 spring:
   main:
-    banner-mode: OFF
     log-startup-info: false
   kafka:
     listener:
@@ -12,4 +11,6 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    bootstrap-servers: kafka:9092
+    bootstrap-servers: localhost:9092
+    input-lowercase-topic: t.lower.case
+    output-uppercase-topic: t.upper.case
