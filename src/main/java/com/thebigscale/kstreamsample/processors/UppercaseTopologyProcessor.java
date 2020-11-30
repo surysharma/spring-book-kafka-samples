@@ -1,4 +1,4 @@
-package com.thebigscale.kstreamsample.config;
+package com.thebigscale.kstreamsample.processors;
 
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 @Configuration
-public class UppercaseTopologyConfiguration {
+public class UppercaseTopologyProcessor {
 
 
     private final String inputTopic;
     private final String outputTopic;
 
-    UppercaseTopologyConfiguration(Environment env) {
+    UppercaseTopologyProcessor(Environment env) {
         this.inputTopic = env.getProperty("spring.kafka.input-lowercase-topic");
         this.outputTopic = env.getProperty("spring.kafka.output-uppercase-topic");
     }
@@ -37,9 +37,7 @@ public class UppercaseTopologyConfiguration {
         upperCaseStream.to(outputTopic, Produced.with(Serdes.String(), Serdes.String()));
 
         Topology topology = builder.build();
-        System.out.println("!!!!!!!!!!!");
         System.out.println(topology.describe());
-        System.out.println("!!!!!!!!!!!");
         return topology;
     }
 }

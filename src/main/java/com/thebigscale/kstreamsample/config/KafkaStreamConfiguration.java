@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.annotation.KafkaStreamsDefaultConfiguration;
 import org.springframework.kafka.config.KafkaStreamsConfiguration;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Configuration
+@EnableKafkaStreams
 public class KafkaStreamConfiguration {
 
     public static final String APP_ID = "upper-case-demo";
