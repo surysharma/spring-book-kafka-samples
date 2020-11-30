@@ -26,13 +26,6 @@ public class KafkaStreamConfiguration {
 
     private final String outputTopic;
 
-    public KafkaStreamConfiguration(KafkaProperties kafkaProperties, Environment env) {
-        this.kafkaProperties = kafkaProperties;
-        this.inputTopic = env.getProperty("spring.kafka.input-lowercase-topic");
-        this.outputTopic = env.getProperty("spring.kafka.output-uppercase-topic");
-
-    }
-
     @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
     public KafkaStreamsConfiguration getStreamsConfig() {
         Map<String, Object> props = new HashMap<>();
@@ -50,4 +43,11 @@ public class KafkaStreamConfiguration {
     @Bean
     public NewTopic createOutputTopic() {  return new NewTopic(outputTopic,Optional.of(1), Optional.empty()); }
 
+
+    public KafkaStreamConfiguration(KafkaProperties kafkaProperties, Environment env) {
+        this.kafkaProperties = kafkaProperties;
+        this.inputTopic = env.getProperty("spring.kafka.input-lowercase-topic");
+        this.outputTopic = env.getProperty("spring.kafka.output-uppercase-topic");
+
+    }
 }

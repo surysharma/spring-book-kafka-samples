@@ -10,17 +10,17 @@ Create a configuration class
 
 2. Configure the @Bean with a unique name and provide the kafka properties.
 
-3. Create a KafkaStreamsConfiguration properties bean.
+3. Create the topic beans representing the kafka topics with bean names, partitions and replication factor.
 
-image::image-2020-11-25-13-23-43-891.png[]
+image::image-2020-11-30-11-42-05-991.png[]
 
 Create a Topology using the KStream as a Bean
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. A configuration class is declared
-2. StreamsBuilder is injected
+2. A bean that injects a StreamsBuilder and returns a Topology
 
-image::image-2020-11-25-19-50-51-338.png[]
+image::image-2020-11-30-11-44-18-827.png[]
 
 How to run the sample app?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
