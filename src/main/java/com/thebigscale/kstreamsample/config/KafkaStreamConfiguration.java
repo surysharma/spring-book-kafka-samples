@@ -36,9 +36,7 @@ public class KafkaStreamConfiguration {
     }
 
     @Bean
-    public NewTopic createInputTopic() {
-        return new NewTopic(inputTopic,Optional.of(1), Optional.empty());
-    }
+    public NewTopic createInputTopic() { return new NewTopic(inputTopic,Optional.of(1), Optional.empty()); }
 
     @Bean
     public NewTopic createOutputTopic() {  return new NewTopic(outputTopic,Optional.of(1), Optional.empty()); }

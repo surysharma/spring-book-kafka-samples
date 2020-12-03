@@ -35,8 +35,9 @@ class UppercaseTopologyProcessorTest {
         kafkaProperties.put(StreamsConfig.APPLICATION_ID_CONFIG, APP_ID);
         kafkaProperties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 
+        new UppercaseTopologyProcessor(env).kStreamPromoToUppercase(sb);
         topologyTestDriver = new TopologyTestDriver(
-                new UppercaseTopologyProcessor(env).getTopology(sb), kafkaProperties);
+                sb.build(), kafkaProperties);
     }
 
     @Test
