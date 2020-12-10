@@ -1,6 +1,5 @@
 package com.thebigscale.kstreamsample.config;
 
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.streams.StreamsConfig;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +11,6 @@ import org.springframework.kafka.config.KafkaStreamsConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Configuration
 @EnableKafkaStreams
@@ -21,10 +19,6 @@ public class KafkaStreamConfiguration {
     public static final String APP_ID = "upper-case-demo";
 
     private final KafkaProperties kafkaProperties;
-
-    private final String inputTopic;
-
-    private final String outputTopic;
 
     @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
     public KafkaStreamsConfiguration getStreamsConfig() {
@@ -35,17 +29,7 @@ public class KafkaStreamConfiguration {
         return new KafkaStreamsConfiguration(props);
     }
 
-    @Bean
-    public NewTopic createInputTopic() { return new NewTopic(inputTopic,Optional.of(1), Optional.empty()); }
-
-    @Bean
-    public NewTopic createOutputTopic() {  return new NewTopic(outputTopic,Optional.of(1), Optional.empty()); }
-
-
     public KafkaStreamConfiguration(KafkaProperties kafkaProperties, Environment env) {
         this.kafkaProperties = kafkaProperties;
-        this.inputTopic = env.getProperty("spring.kafka.input-lowercase-topic");
-        this.outputTopic = env.getProperty("spring.kafka.output-uppercase-topic");
-
     }
 }

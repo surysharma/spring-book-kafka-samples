@@ -29,7 +29,12 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" },
+		topics = {
+		"${spring.kafka.input-lowercase-topic}",
+				"${spring.kafka.output-uppercase-topic}"
+		}
+)
 class KStreamSampleApplicationTests {
 
 
