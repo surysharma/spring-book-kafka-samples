@@ -4,7 +4,6 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.*;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -28,7 +27,11 @@ public class UppercaseTopologyProcessor {
 
         sourceStream.print(Printed.<String, String>toSysOut().withLabel("Original KStream in getTopology..."));
 
-        KStream<String, String> upperCaseStream = sourceStream.mapValues((ValueMapper<String, String>) String::toUpperCase);
+        sourceStream.process(CapitalCaseProcessor::new);
+
+        KStream<String, String> camelCaseStream = sourceStream.transform(HeaderAppender::new, Named.as("camelcase-processor"));
+
+        KStream<String, String> upperCaseStream = camelCaseStream.mapValues((ValueMapper<String, String>) String::toUpperCase);
 
         upperCaseStream.print(Printed.<String, String>toSysOut().withLabel("Uppercase KStream..."));
 
